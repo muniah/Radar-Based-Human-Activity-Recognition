@@ -1,6 +1,35 @@
 # Radar-Based Human Activity Recognition (HAR)
 
-This project explores advanced signal processing and deep learning techniques for radar-based human activity recognition (HAR), focusing on both dynamic and static activity classification. Radar offers a privacy-preserving, non-contact alternative to vision-based systems, especially valuable in sensitive settings such as long-term care facilities.
+This project provides a modular Python implementation of a radar signal processing pipeline that generates micro-Doppler spectrograms from time-domain radar returns. It includes denoising techniques, entropy-based optimal range-bin selection, and a CNN-based neural network model for spectrogram classification.
+
+## Project Structure 
+
+├── data_loader.py               # Load .mat radar data, add AWGN noise
+├── spectrogram_utils.py         # STFT, FFT, entropy, range-bin selection
+├── denoising_algorithms.py      # EBD and Adaptive Thresholding
+├── visualization.py             # Spectrogram plotting functions
+├── classifier.py                # PyTorch CNN model for classification
+├── main_pipeline.py             # Example runner script
+
+## Features
+
+✅ Load radar returns from .mat files
+
+✅ Add synthetic white Gaussian noise at varying SNR levels
+
+✅ Compute spectrograms via STFT
+
+✅ Select optimal range-bin using entropy minimization
+
+✅ Denoise using:
+
+Entropy-Based Denoising (EBD)
+
+Adaptive Thresholding (ADTh)
+
+✅ Visualize noisy and denoised spectrograms
+
+✅ Classify spectrograms using a lightweight CNN model
 
 ## Project Highlights
 
@@ -23,6 +52,8 @@ This project explores advanced signal processing and deep learning techniques fo
   * Temporal Tracking algorithm for enforcing consistency in cluttered environments.
   * Grad-CAM visualizations for model interpretability.
 
+* A simple PyTorch CNN model is provided in classifier.py for supervised classification of spectrograms (e.g., walking vs running).
+
 ## Datasets
 
 * Dynamic Activity Dataset: 19,800 radar samples covering 11 activities across multiple angles and SNR levels.
@@ -42,6 +73,14 @@ This project explores advanced signal processing and deep learning techniques fo
 * Denoising results of spectrograms across SNR levels
 * RA map attention heatmaps using Grad-CAM
 * Bounding box overlays and generated masks for static feature maps
+
+## Evaluation Metrics
+Included (in metrics.py):
+Mean Squared Error (MSE)
+Mean Absolute Error (MAE)
+PSNR
+Structural Similarity Index (SSIM)
+Correlation Coefficient
 
 ## Key Contributions
 
